@@ -1,5 +1,6 @@
 from picosdk.ps5000a import ps5000a as ps
 from picosdk.functions import adc2mV, assert_pico_ok
+import ctypes
 print('ok')
 
 
