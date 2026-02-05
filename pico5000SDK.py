@@ -1,5 +1,5 @@
 from picosdk.ps5000a import ps5000a as ps
-from picosdk.functions import assert_pico_ok
+from picosdk.functions import adc2mV, assert_pico_ok, mV2adc
 import ctypes
 
 
@@ -28,18 +28,37 @@ class PicoScope5000A:
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
         
+
         # Set up channel A
         # handle = chandle
-        self.channel = ps.PS5000A_CHANNEL["PS5000A_CHANNEL_A"]
-        # enabled = 1
+        channel = ps.PS5000A_CHANNEL[f"PS5000A_CHANNEL_{params['channel'].upper()}"]
         coupling_type = ps.PS5000A_COUPLING["PS5000A_DC"]
-        chARange = ps.PS5000A_RANGE["PS5000A_20V"]
-        # analogue offset = 0 V
-        status = ps.ps5000aSetChannel(self.chandle, self.channel, 1, coupling_type, chARange, 0)
+        chARange = ps.PS5000A_RANGE[params['range']]
+        status = ps.ps5000aSetChannel(self.chandle, channel, 1, coupling_type, chARange, 0)
         assert_pico_ok(status)
 
-        print("Configure called with:", params)
-        # здесь позже будет ps5000aSetChannel, trigger и т.д.
+        # find maximum ADC count value
+        # handle = chandle
+        # pointer to value = ctypes.byref(maxADC)
+        maxADC = ctypes.c_int16()
+        status = ps.ps5000aMaximumValue(self.chandle, ctypes.byref(maxADC))
+        assert_pico_ok(status)
+
+        # Set up an advanced trigger
+        adcTriggerLevelA = mV2adc(30, chARange, maxADC)
+
+        simple_trigger = ps.ps5000aSetSimpleTrigger(
+            self.chandle,
+            1,  # enable
+            channel, # channel
+            adcTriggerLevelA, # treshold
+            ps.PS5000A_THRESHOLD_DIRECTION["PS5000A_RISING"], # ABOVE, BELOW, RISING, FALLING, etc.
+            0,  # delay
+            0   # auto trigger time in ms
+        )
+
+
+
 
     def close(self):
         if self.is_open:

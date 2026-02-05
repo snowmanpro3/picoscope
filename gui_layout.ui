@@ -1,0 +1,3675 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1390</width>
+    <height>789</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>ACS_Controller</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QTabWidget" name="tab1">
+      <property name="currentIndex">
+       <number>3</number>
+      </property>
+      <property name="documentMode">
+       <bool>false</bool>
+      </property>
+      <property name="tabsClosable">
+       <bool>false</bool>
+      </property>
+      <property name="movable">
+       <bool>false</bool>
+      </property>
+      <property name="tabBarAutoHide">
+       <bool>false</bool>
+      </property>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Settings</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_18">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_17">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_85">
+            <property name="spacing">
+             <number>15</number>
+            </property>
+            <item>
+             <widget class="QPushButton" name="reset_button">
+              <property name="minimumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>100</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>RESET</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="zeropos_button">
+              <property name="minimumSize">
+               <size>
+                <width>130</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>130</width>
+                <height>30</height>
+               </size>
+              </property>
+              <property name="text">
+               <string>Обнулить позиции</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <spacer name="horizontalSpacer">
+              <property name="orientation">
+               <enum>Qt::Horizontal</enum>
+              </property>
+              <property name="sizeHint" stdset="0">
+               <size>
+                <width>1000</width>
+                <height>40</height>
+               </size>
+              </property>
+             </spacer>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_8">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_40">
+              <property name="spacing">
+               <number>25</number>
+              </property>
+              <item>
+               <widget class="QGroupBox" name="groupBox_4">
+                <property name="minimumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Axis 0</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_9">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_10">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetFixedSize</enum>
+                   </property>
+                   <property name="leftMargin">
+                    <number>10</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_41">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QCheckBox" name="choose_axis_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Выбрать ось 0</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="start_axis_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>СТАРТ</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_0_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_1">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="move_by_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Переместиться на</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="move_by_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pos_label_0">
+                     <property name="minimumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Текущая позиция:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_42">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_moving_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>В движении</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_moving_indicator_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_43">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_acc_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускоряется</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_acc_indicator_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_44">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Прибыл на заданную позицию</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_indicator_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_45">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="axis_state_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Состояние оси</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="axis_state_indicator_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="enable_axis_button_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Вкл/выкл</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_0_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_46">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="speed_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Скорость</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="speed_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_47">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="acceleration_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускорение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="acceleration_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_48">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="deceleration_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="deceleration_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_49">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="kill_deceleration_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Крит. торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="kill_deceleration_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_50">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="jerk_label_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Рывок</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="jerk_input_0">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_5">
+                <property name="minimumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Axis 1</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_11">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_12">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetFixedSize</enum>
+                   </property>
+                   <property name="leftMargin">
+                    <number>10</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_51">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QCheckBox" name="choose_axis_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Выбрать ось 1</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="start_axis_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>СТАРТ</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_1_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_52">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="move_by_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Переместиться на</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="move_by_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pos_label_1">
+                     <property name="minimumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Текущая позиция:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_53">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_moving_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>В движении</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_moving_indicator_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_54">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_acc_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускоряется</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_acc_indicator_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_55">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Прибыл на заданную позицию</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_indicator_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_56">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="axis_state_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Состояние оси</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="axis_state_indicator_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="enable_axis_button_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Вкл/выкл</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_1_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_57">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="speed_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Скорость</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="speed_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_58">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="acceleration_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускорение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="acceleration_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_59">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="deceleration_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="deceleration_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_60">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="kill_deceleration_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Крит. торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="kill_deceleration_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_61">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="jerk_label_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Рывок</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="jerk_input_1">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_6">
+                <property name="minimumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Axis 2</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_13">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_14">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetFixedSize</enum>
+                   </property>
+                   <property name="leftMargin">
+                    <number>10</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_62">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QCheckBox" name="choose_axis_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Выбрать ось 2</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="start_axis_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>СТАРТ</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_2_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_63">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="move_by_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Переместиться на</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="move_by_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pos_label_2">
+                     <property name="minimumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Текущая позиция:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_64">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_moving_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>В движении</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_moving_indicator_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_65">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_acc_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускоряется</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_acc_indicator_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_66">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Прибыл на заданную позицию</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_indicator_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_67">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="axis_state_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Состояние оси</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="axis_state_indicator_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="enable_axis_button_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Вкл/выкл</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_2_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_68">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="speed_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Скорость</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="speed_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_69">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="acceleration_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускорение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="acceleration_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_70">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="deceleration_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="deceleration_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_71">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="kill_deceleration_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Крит. торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="kill_deceleration_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_72">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="jerk_label_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Рывок</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="jerk_input_2">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+              <item>
+               <widget class="QGroupBox" name="groupBox_7">
+                <property name="minimumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>250</width>
+                  <height>470</height>
+                 </size>
+                </property>
+                <property name="title">
+                 <string>Axis 3</string>
+                </property>
+                <layout class="QVBoxLayout" name="verticalLayout_15">
+                 <item>
+                  <layout class="QVBoxLayout" name="verticalLayout_16">
+                   <property name="sizeConstraint">
+                    <enum>QLayout::SetFixedSize</enum>
+                   </property>
+                   <property name="leftMargin">
+                    <number>10</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>10</number>
+                   </property>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_73">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QCheckBox" name="choose_axis_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>160</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Выбрать ось 3</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="start_axis_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>50</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>СТАРТ</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_3_2">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_74">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="move_by_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Переместиться на</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="move_by_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="pos_label_3">
+                     <property name="minimumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>210</width>
+                       <height>20</height>
+                      </size>
+                     </property>
+                     <property name="text">
+                      <string>Текущая позиция:</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_75">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_moving_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>В движении</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_moving_indicator_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_76">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_acc_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускоряется</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_acc_indicator_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_77">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Прибыл на заданную позицию</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="is_in_pos_indicator_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_78">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="axis_state_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>110</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Состояние оси</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLabel" name="axis_state_indicator_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>20</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color:rgb(255, 0, 0)</string>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="enable_axis_button_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>80</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Вкл/выкл</string>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <spacer name="verticalSpacer_3_3">
+                     <property name="orientation">
+                      <enum>Qt::Vertical</enum>
+                     </property>
+                     <property name="sizeType">
+                      <enum>QSizePolicy::Fixed</enum>
+                     </property>
+                     <property name="sizeHint" stdset="0">
+                      <size>
+                       <width>210</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                    </spacer>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_79">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="speed_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Скорость</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="speed_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_80">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="acceleration_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Ускорение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="acceleration_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_81">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="deceleration_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="deceleration_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_82">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="kill_deceleration_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Крит. торможение</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="kill_deceleration_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                   <item>
+                    <layout class="QHBoxLayout" name="horizontalLayout_83">
+                     <property name="spacing">
+                      <number>0</number>
+                     </property>
+                     <item>
+                      <widget class="QLabel" name="jerk_label_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>140</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="text">
+                        <string>Рывок</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QLineEdit" name="jerk_input_3">
+                       <property name="minimumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>70</width>
+                         <height>20</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_84">
+            <item>
+             <widget class="QPushButton" name="connect_button">
+              <property name="minimumSize">
+               <size>
+                <width>370</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>370</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 20pt &quot;GOST type A&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Подключиться к контроллеру</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QLabel" name="label">
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color:rgb(255, 0, 0)</string>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="start_choosen_axis_button">
+              <property name="minimumSize">
+               <size>
+                <width>300</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>300</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">font: 20pt &quot;GOST type A&quot;;</string>
+              </property>
+              <property name="text">
+               <string>СТАРТ ВЫБРАННЫХ ОСЕЙ</string>
+              </property>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="stop_button">
+              <property name="minimumSize">
+               <size>
+                <width>250</width>
+                <height>60</height>
+               </size>
+              </property>
+              <property name="autoFillBackground">
+               <bool>false</bool>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    background-color: red;  /* Красный фон */
+    color: white;           /* Белый текст */
+    border: none;           /* Убираем границу */
+    padding: 10px;         /* Отступы */
+    font-family: &quot;GOST Type A&quot;;  /* Шрифт GOST Type A */
+    font-size: 30px;       /* Размер шрифта */
+}
+QPushButton:hover {
+    background-color: rgb(170, 0, 0);  /* Красный фон при наведении */
+    color: white;           /* Белый текст при наведении */
+}</string>
+              </property>
+              <property name="text">
+               <string>СТОП</string>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Выбор режимов движения</string>
+       </attribute>
+       <widget class="QPushButton" name="start_mode_motion">
+        <property name="geometry">
+         <rect>
+          <x>870</x>
+          <y>530</y>
+          <width>371</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
+        </property>
+        <property name="text">
+         <string>НАЧАТЬ ДВИЖЕНИЕ</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="radius_input">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>260</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="rotation_input">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>260</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>+ или -</string>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="stop_button_2">
+        <property name="geometry">
+         <rect>
+          <x>940</x>
+          <y>600</y>
+          <width>250</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: red;  /* Красный фон */
+    color: white;           /* Белый текст */
+    border: none;           /* Убираем границу */
+    padding: 10px;         /* Отступы */
+    font-family: &quot;GOST Type A&quot;;  /* Шрифт GOST Type A */
+    font-size: 30px;       /* Размер шрифта */
+}
+QPushButton:hover {
+    background-color: rgb(170, 0, 0);  /* Красный фон при наведении */
+    color: white;           /* Белый текст при наведении */
+}</string>
+        </property>
+        <property name="text">
+         <string>СТОП</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="plot_pic">
+        <property name="geometry">
+         <rect>
+          <x>750</x>
+          <y>0</y>
+          <width>591</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_3">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>240</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Радиус</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_6">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>10</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Выбор операции:</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="check_mode">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>30</y>
+          <width>261</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Режим движения</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>По окружности</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Первый магнитный интеграл</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Второй магнитный интеграл</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Нахождение магнитной оси</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="label_9">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>160</y>
+          <width>141</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Параметры движения:</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="speed_input">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>210</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="mode_input">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>210</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="distance_input">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>210</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_19">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>190</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Скорость</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_20">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>190</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&quot;X&quot; или &quot;Y&quot;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_10">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>190</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Расстояние</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="Console">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>540</y>
+          <width>850</width>
+          <height>130</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>850</width>
+          <height>130</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>850</width>
+          <height>130</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="clearConsole_button">
+        <property name="geometry">
+         <rect>
+          <x>720</x>
+          <y>500</y>
+          <width>141</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Clear Console</string>
+        </property>
+       </widget>
+       <widget class="QTableWidget" name="tablePosition">
+        <property name="geometry">
+         <rect>
+          <x>300</x>
+          <y>30</y>
+          <width>401</width>
+          <height>221</height>
+         </rect>
+        </property>
+        <property name="sizeAdjustPolicy">
+         <enum>QAbstractScrollArea::AdjustIgnored</enum>
+        </property>
+        <attribute name="horizontalHeaderStretchLastSection">
+         <bool>true</bool>
+        </attribute>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <row>
+         <property name="text">
+          <string/>
+         </property>
+        </row>
+        <column>
+         <property name="text">
+          <string>Ось</string>
+         </property>
+        </column>
+        <column>
+         <property name="text">
+          <string>Текущее положение</string>
+         </property>
+        </column>
+        <item row="0" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="0" column="1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="1" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="1" column="1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="2" column="0">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="2" column="1">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="3" column="0">
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+        <item row="3" column="1">
+         <property name="flags">
+          <set>ItemIsSelectable|ItemIsEditable|ItemIsDragEnabled|ItemIsUserCheckable|ItemIsEnabled</set>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="findMagAxes_button">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>400</y>
+          <width>300</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 16pt &quot;MS Shell Dlg 2&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Найти магнитную ось</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_14">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>230</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Направление</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_15">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>240</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>вращения</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="plot_pic_2">
+        <property name="geometry">
+         <rect>
+          <x>390</x>
+          <y>270</y>
+          <width>281</width>
+          <height>241</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="number_of_rounds_input">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>260</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_16">
+        <property name="geometry">
+         <rect>
+          <x>220</x>
+          <y>240</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>оборотов</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_64">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>230</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Количество</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::RichText</enum>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_2">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>80</y>
+          <width>131</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Вариант выполнения</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_4">
+        <property name="geometry">
+         <rect>
+          <x>60</x>
+          <y>100</y>
+          <width>161</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>гармонического анализа</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="cm_mode">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>120</y>
+          <width>261</width>
+          <height>31</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>Усреднение по сигналам</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Усреднение по преобразованию БПФ</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab">
+       <attribute name="title">
+        <string>Tests</string>
+       </attribute>
+       <widget class="QLabel" name="label_37">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>160</y>
+          <width>291</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Параметры для первого магнитного интеграла</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="circ_speed_input_test">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>130</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_38">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>110</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Скорость</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="plot_pic_test">
+        <property name="geometry">
+         <rect>
+          <x>550</x>
+          <y>100</y>
+          <width>601</width>
+          <height>411</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_39">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>200</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Расстояние</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="ffi_distance_input_test">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>220</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="ffi_speed_input_test">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>220</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="stop_button_test">
+        <property name="geometry">
+         <rect>
+          <x>80</x>
+          <y>540</y>
+          <width>250</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: red;  /* Красный фон */
+    color: white;           /* Белый текст */
+    border: none;           /* Убираем границу */
+    padding: 10px;         /* Отступы */
+    font-family: &quot;GOST Type A&quot;;  /* Шрифт GOST Type A */
+    font-size: 30px;       /* Размер шрифта */
+}
+QPushButton:hover {
+    background-color: rgb(170, 0, 0);  /* Красный фон при наведении */
+    color: white;           /* Белый текст при наведении */
+}</string>
+        </property>
+        <property name="text">
+         <string>СТОП</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_40">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>80</y>
+          <width>261</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Параметры для движения по окружности</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_41">
+        <property name="geometry">
+         <rect>
+          <x>30</x>
+          <y>110</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Радиус</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="check_mode_test">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>30</y>
+          <width>211</width>
+          <height>41</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>По окружности</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Первый магнитный интеграл</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Второй магнитный интеграл</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QPushButton" name="start_mode_motion_test">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>470</y>
+          <width>371</width>
+          <height>61</height>
+         </rect>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 75 18pt &quot;Times New Roman&quot;;</string>
+        </property>
+        <property name="text">
+         <string>НАЧАТЬ ДВИЖЕНИЕ</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_42">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>200</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Скорость</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="lineEdit_6">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>130</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="circ_radius_input_test">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>130</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="ffi_mode_input_test">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>220</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_43">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>200</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&quot;X&quot; или &quot;Y&quot;</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_44">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>10</y>
+          <width>101</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Выбор движения:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_45">
+        <property name="geometry">
+         <rect>
+          <x>20</x>
+          <y>300</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Скорость</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_46">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>300</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Расстояние</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="sfi_distance_input_test">
+        <property name="geometry">
+         <rect>
+          <x>210</x>
+          <y>320</y>
+          <width>71</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="sfi_speed_input_test">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>320</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_47">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>260</y>
+          <width>291</width>
+          <height>21</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>Параметры для второго магнитного интеграла</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="sfi_mode_input_test">
+        <property name="geometry">
+         <rect>
+          <x>110</x>
+          <y>320</y>
+          <width>81</width>
+          <height>21</height>
+         </rect>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_48">
+        <property name="geometry">
+         <rect>
+          <x>120</x>
+          <y>300</y>
+          <width>71</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>&quot;X&quot; или &quot;Y&quot;</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Page</string>
+       </attribute>
+       <widget class="QPushButton" name="connect_button_2">
+        <property name="geometry">
+         <rect>
+          <x>10</x>
+          <y>610</y>
+          <width>370</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>370</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>370</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;GOST type A&quot;;</string>
+        </property>
+        <property name="text">
+         <string>Подключиться к пикоскопу</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="channel_label">
+        <property name="geometry">
+         <rect>
+          <x>36</x>
+          <y>60</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>CHANNEL</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="channel_input">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>60</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="range_label">
+        <property name="geometry">
+         <rect>
+          <x>36</x>
+          <y>90</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>RANGE</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="range_input">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>90</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="acdc_label">
+        <property name="geometry">
+         <rect>
+          <x>36</x>
+          <y>130</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>AC/DC</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="speed_label_7">
+        <property name="geometry">
+         <rect>
+          <x>36</x>
+          <y>170</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Скорость</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="speed_input_7">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>170</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="acdc_choice">
+        <property name="geometry">
+         <rect>
+          <x>170</x>
+          <y>130</y>
+          <width>73</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>AC</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>DC</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QComboBox" name="range_units">
+        <property name="geometry">
+         <rect>
+          <x>260</x>
+          <y>90</y>
+          <width>41</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>V</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>mV</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>uV</string>
+         </property>
+        </item>
+       </widget>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1390</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuremote_controller">
+    <property name="title">
+     <string>Remote controller</string>
+    </property>
+   </widget>
+   <addaction name="menuremote_controller"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
