@@ -9,7 +9,7 @@ import ctypes
 import numpy as np
 from picosdk.ps5000a import ps5000a as ps
 import matplotlib.pyplot as plt
-from picosdk.functions import adc2mV, assert_pico_ok, mV2adc
+from picosdk.functions import adc2mV, assert_pico_ok, mV2adc #! assert_pico_ok checks the status. if not ok, raises PicoNotOkError
 
 # Create chandle and status ready for use
 chandle = ctypes.c_int16()
