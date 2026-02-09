@@ -47,7 +47,7 @@ class PicoScope5000A:
         assert_pico_ok(status)
 
         # Set up an advanced trigger in mv
-        adcTriggerLevelA = mV2adc(100, chARange, maxADC)
+        adcTriggerLevelA = mV2adc(40, chARange, maxADC)
 
         simple_trigger = ps.ps5000aSetSimpleTrigger(
             self.chandle,
@@ -56,7 +56,7 @@ class PicoScope5000A:
             adcTriggerLevelA, # treshold
             ps.PS5000A_THRESHOLD_DIRECTION["PS5000A_RISING"], # ABOVE, BELOW, RISING, FALLING, etc.
             0,  # delay
-            1   # auto trigger time in ms
+            0   # auto trigger time in ms
         )
 
         # Set number of pre and post trigger samples to be collected
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     print("Configuring channel A...")
     scope.configure({
         "channel": "A",
-        "range": "PS5000A_20V",
+        "range": "PS5000A_200MV",
         "coupling": "PS5000A_DC"
     })
 
