@@ -48,7 +48,7 @@
              <number>15</number>
             </property>
             <item>
-             <widget class="QPushButton" name="reset_button">
+             <widget class="QPushButton" name="reset_button11">
               <property name="minimumSize">
                <size>
                 <width>100</width>
@@ -2414,7 +2414,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_84">
             <item>
-             <widget class="QPushButton" name="connect_button">
+             <widget class="QPushButton" name="connect_button11">
               <property name="minimumSize">
                <size>
                 <width>370</width>
@@ -2480,7 +2480,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QPushButton" name="stop_button">
+             <widget class="QPushButton" name="stop_button11">
               <property name="minimumSize">
                <size>
                 <width>250</width>
@@ -2600,7 +2600,7 @@ QPushButton:hover {
          <bool>false</bool>
         </property>
        </widget>
-       <widget class="QLabel" name="plot_pic">
+       <widget class="QLabel" name="plot_pic11">
         <property name="geometry">
          <rect>
           <x>750</x>
@@ -2756,7 +2756,7 @@ QPushButton:hover {
          <string>Расстояние</string>
         </property>
        </widget>
-       <widget class="QPlainTextEdit" name="Console">
+       <widget class="QPlainTextEdit" name="Console11">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -3408,7 +3408,7 @@ QPushButton:hover {
        <attribute name="title">
         <string>Page</string>
        </attribute>
-       <widget class="QPushButton" name="connect_button_2">
+       <widget class="QPushButton" name="connect_button">
         <property name="geometry">
          <rect>
           <x>10</x>
@@ -3433,7 +3433,7 @@ QPushButton:hover {
          <string notr="true">font: 20pt &quot;GOST type A&quot;;</string>
         </property>
         <property name="text">
-         <string>Подключиться к пикоскопу</string>
+         <string>CONNECT</string>
         </property>
        </widget>
        <widget class="QLabel" name="channel_label">
@@ -3555,7 +3555,7 @@ QPushButton:hover {
          <string>AC/DC</string>
         </property>
        </widget>
-       <widget class="QLabel" name="speed_label_7">
+       <widget class="QLabel" name="meas_time_label">
         <property name="geometry">
          <rect>
           <x>36</x>
@@ -3577,10 +3577,10 @@ QPushButton:hover {
          </size>
         </property>
         <property name="text">
-         <string>Скорость</string>
+         <string>MeasTIME</string>
         </property>
        </widget>
-       <widget class="QLineEdit" name="speed_input_7">
+       <widget class="QLineEdit" name="meas_time_input">
         <property name="geometry">
          <rect>
           <x>170</x>
@@ -3622,7 +3622,7 @@ QPushButton:hover {
          </property>
         </item>
        </widget>
-       <widget class="QComboBox" name="range_units">
+       <widget class="QComboBox" name="range_units_choice">
         <property name="geometry">
          <rect>
           <x>260</x>
@@ -3675,11 +3675,11 @@ QPushButton:hover {
          <string/>
         </property>
        </widget>
-       <widget class="QPushButton" name="reset_button_2">
+       <widget class="QPushButton" name="reset_button">
         <property name="geometry">
          <rect>
-          <x>30</x>
-          <y>20</y>
+          <x>10</x>
+          <y>570</y>
           <width>100</width>
           <height>30</height>
          </rect>
@@ -3698,6 +3698,417 @@ QPushButton:hover {
         </property>
         <property name="text">
          <string>RESET</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_5">
+        <property name="geometry">
+         <rect>
+          <x>420</x>
+          <y>30</y>
+          <width>55</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string>TTIGGER</string>
+        </property>
+       </widget>
+       <widget class="QCheckBox" name="trigger_choose">
+        <property name="geometry">
+         <rect>
+          <x>510</x>
+          <y>30</y>
+          <width>160</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>160</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>160</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>Turn on/off</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="delay_label">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>150</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>DELAY</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="channel_label_2">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>60</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>CHANNEL</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="t_channel_input">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>60</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="t_delay_input">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>150</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QLabel" name="atrigger_time_label">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>190</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>AUTOTRIGGER TIME</string>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="t_treshold_input">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>90</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QLabel" name="treshold_label">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>90</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TRESHOLD</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="t_direction_label">
+        <property name="geometry">
+         <rect>
+          <x>400</x>
+          <y>120</y>
+          <width>140</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>140</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>TRESHOLD DIRECTION</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="treshold_label_2">
+        <property name="geometry">
+         <rect>
+          <x>620</x>
+          <y>90</y>
+          <width>30</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>30</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>30</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="text">
+         <string>mV</string>
+        </property>
+       </widget>
+       <widget class="QComboBox" name="t_direction_input">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>120</y>
+          <width>81</width>
+          <height>22</height>
+         </rect>
+        </property>
+        <item>
+         <property name="text">
+          <string>RISING</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>ABOVE</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>FALLING</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>BELOW</string>
+         </property>
+        </item>
+       </widget>
+       <widget class="QLabel" name="plot_pic">
+        <property name="geometry">
+         <rect>
+          <x>670</x>
+          <y>20</y>
+          <width>591</width>
+          <height>361</height>
+         </rect>
+        </property>
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="start_button">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>610</y>
+          <width>300</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>300</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>300</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">font: 20pt &quot;GOST type A&quot;;</string>
+        </property>
+        <property name="text">
+         <string>START MEASURE</string>
+        </property>
+       </widget>
+       <widget class="QPlainTextEdit" name="Console">
+        <property name="geometry">
+         <rect>
+          <x>800</x>
+          <y>540</y>
+          <width>550</width>
+          <height>130</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>550</width>
+          <height>130</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>550</width>
+          <height>130</height>
+         </size>
+        </property>
+       </widget>
+       <widget class="QPushButton" name="stop_button">
+        <property name="geometry">
+         <rect>
+          <x>490</x>
+          <y>540</y>
+          <width>301</width>
+          <height>60</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>250</width>
+          <height>60</height>
+         </size>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">QPushButton {
+    background-color: red;  /* Красный фон */
+    color: white;           /* Белый текст */
+    border: none;           /* Убираем границу */
+    padding: 10px;         /* Отступы */
+    font-family: &quot;GOST Type A&quot;;  /* Шрифт GOST Type A */
+    font-size: 30px;       /* Размер шрифта */
+}
+QPushButton:hover {
+    background-color: rgb(170, 0, 0);  /* Красный фон при наведении */
+    color: white;           /* Белый текст при наведении */
+}</string>
+        </property>
+        <property name="text">
+         <string>СТОП</string>
+        </property>
+        <property name="checkable">
+         <bool>false</bool>
+        </property>
+       </widget>
+       <widget class="QLineEdit" name="t_auto_time_input">
+        <property name="geometry">
+         <rect>
+          <x>540</x>
+          <y>190</y>
+          <width>70</width>
+          <height>20</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>70</width>
+          <height>20</height>
+         </size>
         </property>
        </widget>
       </widget>

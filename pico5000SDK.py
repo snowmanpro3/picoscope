@@ -7,9 +7,9 @@ import numpy as np
 
 class PicoScope5000A:
     def __init__(self, resolution="PS5000A_DR_16BIT"):
-        self.chandle = ctypes.c_int16()
+        self.chandle = ctypes.c_int16() #! Дискриптор? Идентификатор? Номерок в гардеробе?
         self.status = {}
-        self.resolution = ps.PS5000A_DEVICE_RESOLUTION[resolution]
+        self.resolution = ps.PS5000A_DEVICE_RESOLUTION[resolution] # Разрешение 16 бит максимум
         self.is_open = False
 
     def open(self):
@@ -19,10 +19,10 @@ class PicoScope5000A:
             self.resolution
         )
 
-        if status in (282, 286):
+        if status in (282, 286): # Обработка ошибок подключения
             ps.ps5000aChangePowerSource(self.chandle, status)
         else:
-            assert_pico_ok(status)
+            assert_pico_ok(status) #! Эта функция сама возвращает ошибку, если status !=0
 
         self.is_open = True
 
