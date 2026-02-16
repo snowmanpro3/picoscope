@@ -3627,10 +3627,15 @@ QPushButton:hover {
          <rect>
           <x>260</x>
           <y>90</y>
-          <width>41</width>
+          <width>61</width>
           <height>22</height>
          </rect>
         </property>
+        <item>
+         <property name="text">
+          <string>MV</string>
+         </property>
+        </item>
         <item>
          <property name="text">
           <string>V</string>
@@ -3638,12 +3643,7 @@ QPushButton:hover {
         </item>
         <item>
          <property name="text">
-          <string>mV</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>uV</string>
+          <string>UV</string>
          </property>
         </item>
        </widget>
@@ -3713,7 +3713,7 @@ QPushButton:hover {
          <string>TTIGGER</string>
         </property>
        </widget>
-       <widget class="QCheckBox" name="trigger_choose">
+       <widget class="QCheckBox" name="trigger_choice">
         <property name="geometry">
          <rect>
           <x>510</x>

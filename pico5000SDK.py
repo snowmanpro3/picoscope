@@ -26,11 +26,10 @@ class PicoScope5000A:
 
         self.is_open = True
 
-    def configure(self, params):
+    def configure(self, params:dict):
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
         
-
         # Set up channel A
         # handle = chandle
         channel = ps.PS5000A_CHANNEL[f"PS5000A_CHANNEL_{params['channel'].upper()}"]
@@ -38,6 +37,22 @@ class PicoScope5000A:
         chARange = ps.PS5000A_RANGE[params['range']]
         status = ps.ps5000aSetChannel(self.chandle, channel, 1, coupling_type, chARange, 0)
         assert_pico_ok(status)
+
+        #! ЭТО ДЛЯ УДОБСТВА ИЗ main_window
+        # self.params = {  
+        #     'channel': None,
+        #     'range': None,
+        #     'range_units_choice': None,
+        #     'acdc_choice': None,
+        #     'meas_time': None,
+        #     't_channel': None,
+        #     't_treshold': None,
+        #     't_direction': None,
+        #     't_delay': None,
+        #     't_auto_time': None,
+        #     'trigger_choice': None,
+        # }
+
 
         # find maximum ADC count value
         # handle = chandle

@@ -3,6 +3,7 @@ PICOSKOPE MEASUREMENT
 """
 
 # Импортируем сгенерированный класс. Команда: pyuic6 gui_layout.ui -o gui_layout.py
+import sys
 from gui_layout import Ui_MainWindow
 from pico5000SDK import PicoScope5000A as pico5000
 from PyQt6 import QtGui
@@ -21,6 +22,9 @@ from PyQt6.QtCore import Qt, QTimer, QObject, pyqtSignal, QThread, pyqtSlot
 
 
 class Picoscope_thermocouple_GUI(QMainWindow):
+    """
+    Класс, связывающий класс GUI с классом поведения пикоскопа
+    """
     def __init__(self):
         super().__init__()
 
@@ -34,36 +38,80 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         self._setup_logger(self.gui.Console) # Настройка консоли для вывода принтов
 
             # "axis_obj": None, #!Здесь хранятся ссылки на ось как объект из модуля newACS, к которым можно применять его методы
+
+        self.params = {
+            'channel': None,
+            'range': None,
+            'range_units_choice': None,
+            'acdc_choice': None,
+            'meas_time': None,
+            't_channel': None,
+            't_treshold': None,
+            't_direction': None,
+            't_delay': None,
+            't_auto_time': None,
+            'trigger_choice': None,
+        }
+
+
+
+        self.connect_ui_elements() # Подключаем функции к элементам интерфейс
     
-        self.connect_ui_elements() # Подключаем функции к элементам интерфейса
+    def connect_to_pico(self):
+        """Подключается к пикоскопу. Инициализирует оси как объекты в ключе 'axis_obj """
+        self.pico = pico5000()
+        status = self.pico.open()
+        print(status)
+        self.dual_print(f"Статус подключения:{self.pico.is_open}")
+
+    def closeEvent(self, event):
+        """
+        Переопределение метода закрытия окна на крестик или ALT+F4
+        """
+        self.dual_print("Завершение работы программы...")
+        
+        # Проверяем, был ли подключен пикоскоп
+        if self.pico is not None:
+            if self.pico.is_open:
+                try:
+                    self.pico.close()
+                    self.dual_print("Соединение с PicoScope закрыто")
+                except Exception as e:
+                    self.dual_print(f"Ошибка при закрытии соединения: {e}")
+                    # Всё равно продолжаем закрытие программы
+            else:
+                self.dual_print("PicoScope не был подключен")
+        else:
+            self.dual_print("PicoScope не был даже инициализирован")
+        event.accept() # Принимаем событие закрытия (окно закроется)
 
 
     def connect_ui_elements(self):
-        # self.gui.connect_button.clicked.connect(self.connect_to_pico)
-        # self.gui.reset_button.clicked.connect(self.set_default_values)
+        self.gui.connect_button.clicked.connect(self.connect_to_pico)
+        self.gui.reset_button.clicked.connect(self.set_default_values)
         # self.gui.start_button.clicked.connect(self.start)
         # self.gui.stop_button.clicked.connect(self.stop_all_axes)
         
-        #!!!! А стоит ли сразу передавать эти значения. Может легче всё связать с функцией старта
-        #!!!! в которой будет проверка на заполнение пустых полей в qTextEdit
         '''Перед connect стоит т.н. сигнал, а сам connect связывает сигнал с обработчиком'''
-        self.gui.channel_input.textChanged.connect(lambda text: self.set_speed(text))
-        self.gui.range_input.textChanged.connect(lambda text: self.set_acceleration(text))
-        self.gui.range_units_choice.currentTextChanged.connect(lambda text: self.enable_or_disable_mode_data(text))
-        self.gui.acdc_choice.currentTextChanged.connect(lambda text: self.enable_or_disable_mode_data(text))
-        self.gui.meas_time_input.textChanged.connect(lambda text: self.set_kill_deceleration(text))
-        self.gui.t_channel_input.textChanged.connect(lambda text: self.set_jerk(text))
-        self.gui.t_treshold_input.textChanged.connect(lambda text: self.set_move_distance(text))
-        self.gui.t_direction_input.currentTextChanged.connect(lambda checked: self.toggle_axis())
-        self.gui.t_delay_input.textChanged.connect(lambda checked: self.start())
-        self.gui.t_auto_time_input.textChanged.connect(lambda checked: self.start())
-        self.gui.trigger_choose.stateChanged.connect(lambda state: self.update_selected_axes(state))
+        self.gui.channel_input.textChanged.connect(lambda text: self.params.update({'channel': text.strip()})) #*
+        self.gui.range_input.textChanged.connect(lambda text: self.params.update({'range': text.strip()})) #*
+        self.gui.range_units_choice.currentTextChanged.connect(lambda text: self.params.update({'range_units_choice': text.strip()})) #*
+        self.gui.acdc_choice.currentTextChanged.connect(lambda text: self.params.update({'acdc_choice': text.strip()})) #*
+        self.gui.meas_time_input.textChanged.connect(lambda text: self.params.update({'meas_time': text.strip()})) #*
+        self.gui.t_channel_input.textChanged.connect(lambda text: self.params.update({'t_channel': text.strip()})) #*
+        self.gui.t_treshold_input.textChanged.connect(lambda text: self.params.update({'t_treshold': text.strip()})) #*
+        self.gui.t_direction_input.currentTextChanged.connect(lambda text: self.params.update({'t_direction': text.strip()})) #*
+        self.gui.t_delay_input.textChanged.connect(lambda text: self.params.update({'t_delay': text.strip()})) #*
+        self.gui.t_auto_time_input.textChanged.connect(lambda text: self.params.update({'t_auto_time': text.strip()})) #*
+        self.gui.trigger_choice.stateChanged.connect(lambda state: self.params.update({'trigger_choice': state.strip()})) #*
         
 
 
     def set_default_values(self): # Выставляет дефолтные параметры движения осей в общем окне
         self.gui.channel_input.setText("A")
         self.gui.range_input.setText("200")
+        self.gui.range_units_choice.setCurrentText("MV")
+        self.gui.acdc_choice.setCurrentText("DC")
         self.gui.meas_time_input.setText("100") #! Какие единицы измерения? нс, мкс, мс?
         self.gui.t_channel_input.setText("A")
         self.gui.t_treshold_input.setText("40")
@@ -91,12 +139,8 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         cursor.movePosition(QTextCursor.MoveOperation.End)
         log_window.setTextCursor(cursor)
 
-    def connect_to_pico(self):
-        """Подключается к пикоскопу. Инициализирует оси как объекты в ключе 'axis_obj """
-        self.pico = pico5000()
-        status = pico5000.open()
-        print(status)
-        self.dual_print(f"Статус подключения:{self.pico.is_open}")
+    def start(self):
+        self.pico.configure(self.params) #!!!! Недоделано
 
 
 
@@ -104,6 +148,6 @@ if __name__ == '__main__':
     app = QApplication([])
     window = Picoscope_thermocouple_GUI()
     window.show()
-    app.exec()
+    sys.exit(app.exec())
     # window.axisstate()
     # print(ACSControllerGUI.__dict__) # Shows all attributes the object have
