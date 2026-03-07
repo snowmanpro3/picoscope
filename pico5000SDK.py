@@ -96,6 +96,52 @@ class PicoScope5000A:
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
         
+        meas_time = params["meas_time"] / 1000  # ms → s
+
+        dt_limit = 1e-3  # 1 ms
+
+        timeIntervalns = ctypes.c_float()
+        returnedMaxSamples = ctypes.c_int32()
+
+        best_timebase = None
+        best_dt = None
+
+        for timebase in range(0, 10000):
+
+            status = ps.ps5000aGetTimebase2(
+                self.chandle,
+                timebase,
+                1,
+                ctypes.byref(timeIntervalns),
+                ctypes.byref(returnedMaxSamples),
+                0
+            )
+
+            if status != 0:
+                continue
+
+            dt = timeIntervalns.value * 1e-9
+
+            if dt <= dt_limit:
+                best_timebase = timebase
+                best_dt = dt
+            else:
+                break
+
+        if best_timebase is None:
+            raise RuntimeError("Could not find suitable timebase")
+
+        self.timebase = best_timebase
+        self.dt = best_dt
+
+        # количество точек
+        self.N = int(meas_time / self.dt)
+
+        print("Timebase configured:")
+        print("timebase =", self.timebase)
+        print("dt =", self.dt)
+        print("samples =", self.N)
+        
         dt_desired = 1 / params['discFrequency']
 
                    #! ЭТО ДЛЯ УДОБСТВА ИЗ main_window
