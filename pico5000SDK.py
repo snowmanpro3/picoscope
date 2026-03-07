@@ -12,6 +12,13 @@ class PicoScope5000A:
         self.resolution = ps.PS5000A_DEVICE_RESOLUTION[resolution] # Разрешение 16 бит максимум
         self.is_open = False
 
+        # состояние измерительной части
+        self.range = None
+        self.maxADC = None
+        self.timebase = None
+        self.dt = None
+        self.N = None
+
     def open(self):
         status = ps.ps5000aOpenUnit(
             ctypes.byref(self.chandle),
@@ -26,53 +33,77 @@ class PicoScope5000A:
 
         self.is_open = True
 
-    def configure(self, params:dict):
+    def configure_channel(self, params: dict):
+        """
+        Функция настраивает канал в соответствии с параметрами из словаря params:
+        - channel: канал (A, B, C или D)
+        - acdc_choice: тип подключения (AC или DC)
+        - range: диапазон измерений (например, 200mV, 500mV, 1V и т.д.)
+        -maxADC: максимальное значение АЦП для выбранного диапазона (ps5000aMaximumValue).
+            Нужно для дальнейших расчетов при преобразовании данных из АЦП в мВ.
+        """
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
         
-        # Set up channel A
         # handle = chandle
-        channel = ps.PS5000A_CHANNEL[f"PS5000A_CHANNEL_{params['channel'].upper()}"]
-        coupling_type = ps.PS5000A_COUPLING["PS5000A_DC"]
-        chARange = ps.PS5000A_RANGE[params['range']]
-        status = ps.ps5000aSetChannel(self.chandle, channel, 1, coupling_type, chARange, 0)
+        self.channel = ps.PS5000A_CHANNEL[f"PS5000A_CHANNEL_{params['channel'].upper()}"] #*
+        self.coupling_type = ps.PS5000A_COUPLING[f"PS5000A_{params['acdc_choice'].upper()}"] #*
+        self.chARange = ps.PS5000A_RANGE[f"PS5000A_{params['range'].upper()}"] #! PS5000A_200MV
+        status = ps.ps5000aSetChannel(self.chandle, self.channel, 1, self.coupling_type, self.chARange, 0)
         assert_pico_ok(status)
 
-        #! ЭТО ДЛЯ УДОБСТВА ИЗ main_window
-        # self.params = {  
-        #     'channel': None,
-        #     'range': None,
-        #     'range_units_choice': None,
-        #     'acdc_choice': None,
-        #     'meas_time': None,
-        #     't_channel': None,
-        #     't_treshold': None,
-        #     't_direction': None,
-        #     't_delay': None,
-        #     't_auto_time': None,
-        #     'trigger_choice': None,
-        # }
-
-
-        # find maximum ADC count value
-        # handle = chandle
+        # Ищем максимальное значение АЦП
         # pointer to value = ctypes.byref(maxADC)
         maxADC = ctypes.c_int16()
         status = ps.ps5000aMaximumValue(self.chandle, ctypes.byref(maxADC))
+        self.maxADC = maxADC.value # Значение максимального АЦП
         assert_pico_ok(status)
 
+    def configure_trigger(self, params: dict):
+        """
+        Функция настраивает триггер по заданным параметрам.
+            - t_channel: канал, на котором сработает триггер
+            - t_treshold: порог срабатывания в мВ
+            - t_direction: направление срабатывания (RISING, FALLING, ABOVE, BELOW)
+            - t_delay: задержка после срабатывания триггера (по дефолту 0)
+            - t_auto_time: время в мс для автоматического срабатывания триггера (по дефолту 0, т.е. отключено)
+            - trigger_choice: включение (1) или отключение (0) триггера
+        """
+
         # Set up an advanced trigger in mv
-        adcTriggerLevelA = mV2adc(40, chARange, maxADC)
+        self.adcTriggerLevel = mV2adc(params['t_treshold'], self.chARange, self.maxADC)
 
         simple_trigger = ps.ps5000aSetSimpleTrigger(
             self.chandle,
-            1,  # enable
-            channel, # channel
-            adcTriggerLevelA, # treshold
-            ps.PS5000A_THRESHOLD_DIRECTION["PS5000A_RISING"], # ABOVE, BELOW, RISING, FALLING, etc.
-            0,  # delay
-            0   # auto trigger time in ms
+            params['trigger_choice'],  #! 1 - enable, 0 - disable
+            self.channel, # channel
+            self.adcTriggerLevel, # treshold
+            ps.PS5000A_THRESHOLD_DIRECTION[f"PS5000A_{params['t_direction'].upper()}"], # ABOVE, BELOW, RISING, FALLING, etc.
+            params['t_delay'],  # delay (по дефолту 0)
+            params['t_auto_time']   # auto trigger time in ms (по дефолту 0)
         )
+        assert_pico_ok(simple_trigger)
+    
+    def configure_timebase(self, params: dict):
+        """
+        Настройка временной базы PicoScope.
+
+        params:
+            meas_time       время измерения (мс)
+            discFrequency   частота дискретизации (Гц)
+        """
+
+        if not self.is_open:
+            raise RuntimeError("PicoScope is not open")
+        
+        dt_desired = 1 / params['discFrequency']
+
+                   #! ЭТО ДЛЯ УДОБСТВА ИЗ main_window
+        # self.params = {
+        #     'meas_time': None,
+        #     'discFrequency': None,
+        #     'trigger_choice': None,
+        #!  }
 
         # Set number of pre and post trigger samples to be collected
         preTriggerSamples = 1000
@@ -86,6 +117,7 @@ class PicoScope5000A:
         # segment index = 0
         timeIntervalns = ctypes.c_float()
         returnedMaxSamples = ctypes.c_int32()
+        # "Если я хочу timebase = 8 и maxSamples точек, с каким реальным шагом по времени ты сможешь это сделать?"
         status = ps.ps5000aGetTimebase2(self.chandle, timebase, maxSamples, ctypes.byref(timeIntervalns), ctypes.byref(returnedMaxSamples), 0)
         assert_pico_ok(status)
 
