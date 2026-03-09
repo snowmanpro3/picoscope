@@ -112,7 +112,7 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         self.gui.range_choice.currentTextChanged.connect(lambda text: self.params.update({'range': text.strip()}))
         self.gui.acdc_choice.currentTextChanged.connect(lambda text: self.params.update({'acdc_choice': text.strip()}))
         self.gui.meas_time_input.textChanged.connect(lambda text: self.params.update({'meas_time': text.strip()}))
-        self.gui.discFrequency_input.textChanged.connect(lambda text: self.params.update({'discFrequency': text.strip()}))
+        self.gui.discFrequency_input.textChanged.connect(lambda text: self.params.update({'discFrequency': text.strip()})) #! А нужно ли???
         self.gui.t_channel_input.textChanged.connect(lambda text: self.params.update({'t_channel': text.strip()}))
         self.gui.t_treshold_input.textChanged.connect(lambda text: self.params.update({'t_treshold': text.strip()}))
         self.gui.t_direction_input.currentTextChanged.connect(lambda text: self.params.update({'t_direction': text.strip()}))

@@ -70,6 +70,10 @@ class PicoScope5000A:
             - trigger_choice: включение (1) или отключение (0) триггера
         """
 
+        #!!!!     'trigger_choice': None,
+        #!     'trigger_choice': None,
+        #!     'trigger_choice': None,
+
         # Set up an advanced trigger in mv
         self.adcTriggerLevel = mV2adc(params['t_treshold'], self.chARange, self.maxADC)
 
@@ -95,16 +99,11 @@ class PicoScope5000A:
 
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
-        
-        meas_time = params["meas_time"] / 1000  # ms → s
 
-        dt_limit = 1e-3  # 1 ms
+        dt_limit = params["dt_limit"]
 
         timeIntervalns = ctypes.c_float()
         returnedMaxSamples = ctypes.c_int32()
-
-        best_timebase = None
-        best_dt = None
 
         for timebase in range(0, 10000):
 
@@ -123,33 +122,16 @@ class PicoScope5000A:
             dt = timeIntervalns.value * 1e-9
 
             if dt <= dt_limit:
-                best_timebase = timebase
-                best_dt = dt
-            else:
+                self.timebase = timebase #* Номер временной базы
+                self.dt = dt #* Реальный шаг по времени для выбранной временной базы в секундах
                 break
 
-        if best_timebase is None:
-            raise RuntimeError("Could not find suitable timebase")
+        meas_time = params["meas_time"] / 1000
+        self.N = int(meas_time / self.dt) #! хз, нужно ли
+        self.maxSamples = returnedMaxSamples.value
 
-        self.timebase = best_timebase
-        self.dt = best_dt
-
-        # количество точек
-        self.N = int(meas_time / self.dt)
-
-        print("Timebase configured:")
-        print("timebase =", self.timebase)
-        print("dt =", self.dt)
-        print("samples =", self.N)
+    def start_measurement(self, params: dict):
         
-        dt_desired = 1 / params['discFrequency']
-
-                   #! ЭТО ДЛЯ УДОБСТВА ИЗ main_window
-        # self.params = {
-        #     'meas_time': None,
-        #     'discFrequency': None,
-        #     'trigger_choice': None,
-        #!  }
 
         # Set number of pre and post trigger samples to be collected
         preTriggerSamples = 1000
