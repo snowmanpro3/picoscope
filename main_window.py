@@ -51,6 +51,7 @@ class Picoscope_thermocouple_GUI(QMainWindow):
             't_delay': None,
             't_auto_time': None,
             'trigger_choice': None,
+            'dt_limit': None
         }
 
         self.connect_ui_elements() # Подключаем функции к элементам интерфейс
@@ -121,6 +122,7 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         self.gui.trigger_choice.stateChanged.connect(
             lambda state: self.params.update({'trigger_choice': 1 if state == 2 else 0})
             )
+        self.gui.dt_limit_input.textChanged.connect(lambda text: self.params.update({'dt_limit': text.strip()}))
         
     def set_default_values(self): # Выставляет дефолтные параметры движения осей в общем окне
         self.gui.channel_input.setText("A")

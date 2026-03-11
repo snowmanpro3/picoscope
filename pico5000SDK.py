@@ -72,7 +72,7 @@ class PicoScope5000A:
 
         #!!!!     'trigger_choice': None,
         #!     'trigger_choice': None,
-        #!     'trigger_choice': None,
+        #!     'trigger_choice': None, ДОДЕЛАТЬ ВЫКЛЮЧЕНИЕ ТРИГГЕРА
 
         # Set up an advanced trigger in mv
         self.adcTriggerLevel = mV2adc(params['t_treshold'], self.chARange, self.maxADC)
@@ -99,13 +99,29 @@ class PicoScope5000A:
 
         if not self.is_open:
             raise RuntimeError("PicoScope is not open")
+        
+        min_timebase = ctypes.c_uint32()
+        timeInterval_sec = ctypes.c_double()
+
+        status = ps.ps5000aGetMinimumTimebaseStateless(
+            self.chandle,
+            ps.PS5000A_CHANNEL_FLAGS["PS5000A_CHANNEL_A"],
+            ctypes.byref(min_timebase),
+            ctypes.byref(timeInterval_sec),
+            self.resolution
+        )
+
+        assert_pico_ok(status)
+
+        print("Minimum timebase:", min_timebase.value)
+        print("Sampling interval (s):", timeInterval_sec.value)
 
         dt_limit = params["dt_limit"]
 
-        timeIntervalns = ctypes.c_float()
+        timeIntervalns = ctypes.c_float() # Единицы измерения - наносекунды
         returnedMaxSamples = ctypes.c_int32()
 
-        for timebase in range(0, 10000):
+        for timebase in range(0, 10000): #* Для 16-бит минимальная таймбейз = 4 (16 нс)
 
             status = ps.ps5000aGetTimebase2(
                 self.chandle,
@@ -130,12 +146,21 @@ class PicoScope5000A:
         self.N = int(meas_time / self.dt) #! хз, нужно ли
         self.maxSamples = returnedMaxSamples.value
 
+        print(f'TimeBase: {self.timebase} s')
+        print(f'Number of samples: {self.N}')
+        print(f'Max samples: {self.maxSamples}')
+
+        if self.N > self.maxSamples:
+            self.N = self.maxSamples  #! Как-то вывести это в консоль нужно по идее
+
     def start_measurement(self, params: dict):
-        
+        """
+        Запускает измерение с текущими настройками канала, триггера и временной базы.
+        """
 
         # Set number of pre and post trigger samples to be collected
-        preTriggerSamples = 1000
-        postTriggerSamples = 1000
+        preTriggerSamples = self.N // 2
+        postTriggerSamples = self.N - preTriggerSamples
         maxSamples = preTriggerSamples + postTriggerSamples
 
         timebase = 8
