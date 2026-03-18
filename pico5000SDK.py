@@ -3,10 +3,12 @@ from picosdk.functions import adc2mV, assert_pico_ok, mV2adc
 import ctypes
 import matplotlib.pyplot as plt
 import numpy as np
+import time
 
 
 class PicoScope5000A:
-    def __init__(self, resolution="PS5000A_DR_16BIT"):
+    def __init__(self, resolution="PS5000A_DR_16BIT", log_func=print):
+        self.log = log_func
         self.chandle = ctypes.c_int16() #! Дискриптор? Идентификатор? Номерок в гардеробе?
         self.status = {}
         self.resolution = ps.PS5000A_DEVICE_RESOLUTION[resolution] # Разрешение 16 бит максимум
@@ -54,10 +56,12 @@ class PicoScope5000A:
 
         # Ищем максимальное значение АЦП
         # pointer to value = ctypes.byref(maxADC)
-        maxADC = ctypes.c_int16()
-        status = ps.ps5000aMaximumValue(self.chandle, ctypes.byref(maxADC))
-        self.maxADC = maxADC.value # Значение максимального АЦП
+        self.maxADC = ctypes.c_int16()
+        status = ps.ps5000aMaximumValue(self.chandle, ctypes.byref(self.maxADC))
+        self.maxADC_int = self.maxADC.value # Значение максимального АЦП
         assert_pico_ok(status)
+
+        self.log(f"Канал {params['channel']} настроен: {params['range']}, {params['acdc_choice']}")
 
     def configure_trigger(self, params: dict):
         """
@@ -87,6 +91,8 @@ class PicoScope5000A:
             params['t_auto_time']   # auto trigger time in ms (по дефолту 0)
         )
         assert_pico_ok(simple_trigger)
+
+        self.log('Триггер успешно настроен')
     
     def configure_timebase(self, params: dict):
         """
@@ -101,27 +107,27 @@ class PicoScope5000A:
             raise RuntimeError("PicoScope is not open")
         
         min_timebase = ctypes.c_uint32()
-        timeInterval_sec = ctypes.c_double()
+        min_timeInterval_sec = ctypes.c_double()
 
         status = ps.ps5000aGetMinimumTimebaseStateless(
             self.chandle,
             ps.PS5000A_CHANNEL_FLAGS["PS5000A_CHANNEL_A"],
             ctypes.byref(min_timebase),
-            ctypes.byref(timeInterval_sec),
+            ctypes.byref(min_timeInterval_sec),
             self.resolution
         )
 
         assert_pico_ok(status)
 
-        print("Minimum timebase:", min_timebase.value)
-        print("Sampling interval (s):", timeInterval_sec.value)
+        self.log("Minimum timebase:", min_timebase.value)
+        self.log("Sampling interval (s):", min_timeInterval_sec.value)
 
         dt_limit = params["dt_limit"]
 
         timeIntervalns = ctypes.c_float() # Единицы измерения - наносекунды
         returnedMaxSamples = ctypes.c_int32()
 
-        for timebase in range(0, 10000): #* Для 16-бит минимальная таймбейз = 4 (16 нс)
+        for timebase in range(min_timebase.value, 10000): #* Для 16-бит минимальная таймбейз = 4 (16 нс)
 
             status = ps.ps5000aGetTimebase2(
                 self.chandle,
@@ -142,16 +148,33 @@ class PicoScope5000A:
                 self.dt = dt #* Реальный шаг по времени для выбранной временной базы в секундах
                 break
 
+        if self.timebase is None:
+            raise RuntimeError("No suitable timebase found for given dt_limit")
+
         meas_time = params["meas_time"] / 1000
         self.N = int(meas_time / self.dt) #! хз, нужно ли
-        self.maxSamples = returnedMaxSamples.value
+        timeIntervalns = ctypes.c_float()
+        returnedMaxSamples2 = ctypes.c_int32()
 
-        print(f'TimeBase: {self.timebase} s')
-        print(f'Number of samples: {self.N}')
-        print(f'Max samples: {self.maxSamples}')
+        status = ps.ps5000aGetTimebase2( # Получаем maxSamples для выбранного timebase через супер большое число точек (10кк)
+            self.chandle,
+            self.timebase,
+            10_000_000,
+            ctypes.byref(timeIntervalns),
+            ctypes.byref(returnedMaxSamples2),
+            0
+        )
 
-        if self.N > self.maxSamples:
-            self.N = self.maxSamples  #! Как-то вывести это в консоль нужно по идее
+        assert_pico_ok(status)
+
+        self.maxSamples = returnedMaxSamples2.value
+
+        self.log(f'TimeBase: {self.timebase} s')
+        self.log(f'Initial number of samples: {self.N}')
+        self.log(f'Max samples: {self.maxSamples}')
+        self.N = min(self.N, self.maxSamples)
+        self.log(f'Number of samples: {self.N}, Max Samples {self.maxSamples}')
+
 
     def start_measurement(self, params: dict):
         """
@@ -163,18 +186,7 @@ class PicoScope5000A:
         postTriggerSamples = self.N - preTriggerSamples
         maxSamples = preTriggerSamples + postTriggerSamples
 
-        timebase = 8
-        # noSamples = maxSamples
-        # pointer to timeIntervalNanoseconds = ctypes.byref(timeIntervalns)
-        # pointer to maxSamples = ctypes.byref(returnedMaxSamples)
-        # segment index = 0
-        timeIntervalns = ctypes.c_float()
-        returnedMaxSamples = ctypes.c_int32()
-        # "Если я хочу timebase = 8 и maxSamples точек, с каким реальным шагом по времени ты сможешь это сделать?"
-        status = ps.ps5000aGetTimebase2(self.chandle, timebase, maxSamples, ctypes.byref(timeIntervalns), ctypes.byref(returnedMaxSamples), 0)
-        assert_pico_ok(status)
-
-        status = ps.ps5000aRunBlock(self.chandle, preTriggerSamples, postTriggerSamples, timebase, None, 0, None, None)
+        status = ps.ps5000aRunBlock(self.chandle, preTriggerSamples, postTriggerSamples, self.timebase, None, 0, None, None)
         assert_pico_ok(status)
 
         # Check for data collection to finish using ps5000aIsReady
@@ -182,6 +194,7 @@ class PicoScope5000A:
         check = ctypes.c_int16(0)
         while ready.value == check.value:
             status = ps.ps5000aIsReady(self.chandle, ctypes.byref(ready))
+            time.sleep(0.001)
 
         # Create buffers ready for assigning pointers for data collection
         bufferAMax = (ctypes.c_int16 * maxSamples)()
@@ -214,10 +227,12 @@ class PicoScope5000A:
         status = ps.ps5000aGetValues(self.chandle, 0, ctypes.byref(cmaxSamples), 0, 0, 0, ctypes.byref(overflow))
         assert_pico_ok(status)
 
-        # convert ADC counts data to mV
-        adc2mVChAMax =  adc2mV(bufferAMax, chARange, maxADC)
+        actual_samples = cmaxSamples.value
 
-        time = np.linspace(0, (cmaxSamples.value - 1) * timeIntervalns.value, cmaxSamples.value)
+        # convert ADC counts data to mV
+        adc2mVChAMax =  adc2mV(bufferAMax, self.chARange, self.maxADC)
+
+        time = np.linspace(0, (actual_samples - 1) * self.dt, actual_samples)
 
         # plot data from channel A and B
         plt.plot(time, adc2mVChAMax[:])

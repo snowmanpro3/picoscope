@@ -3922,7 +3922,7 @@ QPushButton:hover {
          <string>mV</string>
         </property>
        </widget>
-       <widget class="QComboBox" name="t_direction_input">
+       <widget class="QComboBox" name="t_direction_choice">
         <property name="geometry">
          <rect>
           <x>540</x>
@@ -4180,7 +4180,7 @@ QPushButton:hover {
          </size>
         </property>
         <property name="text">
-         <string>1000000</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="discFrequency_label">
@@ -4280,7 +4280,7 @@ QPushButton:hover {
          </size>
         </property>
         <property name="text">
-         <string>0.0005</string>
+         <string/>
         </property>
        </widget>
        <widget class="QLabel" name="range_label_3">
