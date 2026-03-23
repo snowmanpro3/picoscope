@@ -11,7 +11,10 @@ import io
 from PyQt6.QtWidgets import QApplication, QMainWindow, QMessageBox, QPlainTextEdit, QTabWidget
 from PyQt6.QtGui import QTextCursor, QColor
 from PyQt6.QtCore import Qt, QTimer, QObject, pyqtSignal, QThread, pyqtSlot
-# from workers import SingleAxisWorker
+from workers import PicoWorker
+from PyQt6.QtCore import QThread
+from PyQt6.QtWidgets import QVBoxLayout
+import pyqtgraph as pg
 
 # from __future__ import division, print_function
 # import time
@@ -44,13 +47,23 @@ class Picoscope_thermocouple_GUI(QMainWindow):
             't_direction': 'RISING',
             't_delay': '0',
             't_auto_time': '0',
-            'trigger_choice': 'DISABLED',
+            'trigger_choice': 'DISABLED', #!!! мб удалить
+            'mode': 'streaming', # streaming или trigger
             'dt_limit': '0.0005'
         }
 
         self._setup_logger(self.gui.Console) # Настройка консоли для вывода принтов
         self.dual_print("Программа запущена!")
         self.connect_ui_elements() # Подключаем функции к элементам интерфейс
+
+        self.plot_widget = pg.PlotWidget()
+
+        layout = QVBoxLayout(self.gui.plot_container)
+        layout.setContentsMargins(0, 0, 0, 0)  # чтобы без отступов
+
+        layout.addWidget(self.plot_widget)
+
+        self.curve = self.plot_widget.plot() #????
     
     def connect_to_pico(self):
         if self.gui.connect_button.text() == "CONNECT":
@@ -119,6 +132,7 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         self.gui.trigger_choice.stateChanged.connect(
             lambda state: self.params.update({'trigger_choice': 1 if state == 2 else 0})
             )
+        self.gui.trigger_choice.stateChanged.connect(self.on_trigger_checkbox_changed)
         self.gui.dt_limit_input.textChanged.connect(lambda text: self.params.update({'dt_limit': float(text.strip())}))
         
     def set_default_values(self):
@@ -155,12 +169,43 @@ class Picoscope_thermocouple_GUI(QMainWindow):
         cursor.movePosition(QTextCursor.MoveOperation.End)
         log_window.setTextCursor(cursor)
 
-    def start(self):
-        self.pico.configure_channel(self.params)
-        self.pico.configure_trigger(self.params)
-        # self.pico.configure_timebase(self.params)
-        # self.pico.start_measurement(self.params)
+    def on_trigger_checkbox_changed(self, state):
+        if state == Qt.CheckState.Checked.value:  # или просто 2
+            self.params['mode'] = 'trigger'
+            self.dual_print("Выбран режим: TRIGGER")
+        else:
+            self.params['mode'] = 'streaming'
+            self.dual_print("Выбран режим: STREAMING")
 
+    def start(self):
+        # настройка pico
+        self.pico.configure_channel(self.params)
+        self.pico.configure_timebase(self.params)
+
+        if self.params['mode'] == 'trigger':
+            self.pico.configure_trigger(self.params)
+
+        # создаём поток
+        self.thread = QThread()
+        self.worker = PicoWorker(self.pico, self.params)
+
+        self.worker.moveToThread(self.thread)
+
+        # связи
+        self.thread.started.connect(self.worker.run)
+        self.worker.data_ready.connect(self.update_plot)
+        self.worker.log.connect(self.dual_print)
+        self.worker.finished.connect(self.thread.quit)
+
+        self.thread.start()
+
+    def update_plot(self, data):
+        t, y = data
+        self.curve.setData(t, y)
+
+    def stop(self):
+        if self.worker:
+            self.worker.stop()
 
 
 if __name__ == '__main__':

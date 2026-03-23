@@ -4,6 +4,7 @@ import ctypes
 import matplotlib.pyplot as plt
 import numpy as np
 import time
+import numpy as np
 
 
 class PicoScope5000A:
@@ -111,7 +112,7 @@ class PicoScope5000A:
 
         status = ps.ps5000aGetMinimumTimebaseStateless(
             self.chandle,
-            ps.PS5000A_CHANNEL_FLAGS["PS5000A_CHANNEL_A"],
+            1, # PS5000A_CHANNEL_FLAGS["PS5000A_CHANNEL_A"]
             ctypes.byref(min_timebase),
             ctypes.byref(min_timeInterval_sec),
             self.resolution
@@ -119,8 +120,8 @@ class PicoScope5000A:
 
         assert_pico_ok(status)
 
-        self.log("Minimum timebase:", min_timebase.value)
-        self.log("Sampling interval (s):", min_timeInterval_sec.value)
+        self.log(f"Minimum timebase: {min_timebase.value}")
+        self.log(f"Sampling interval (s): {min_timeInterval_sec.value}")
 
         dt_limit = params["dt_limit"]
 
@@ -169,14 +170,14 @@ class PicoScope5000A:
 
         self.maxSamples = returnedMaxSamples2.value
 
-        self.log(f'TimeBase: {self.timebase} s')
+        self.log('Timebase успешно настроена')
+        self.log(f'TimeBase: {self.timebase}')
         self.log(f'Initial number of samples: {self.N}')
         self.log(f'Max samples: {self.maxSamples}')
         self.N = min(self.N, self.maxSamples)
         self.log(f'Number of samples: {self.N}, Max Samples {self.maxSamples}')
 
-
-    def start_measurement(self, params: dict):
+    def start_trigger_measurement(self, params: dict):
         """
         Запускает измерение с текущими настройками канала, триггера и временной базы.
         """
@@ -188,6 +189,8 @@ class PicoScope5000A:
 
         status = ps.ps5000aRunBlock(self.chandle, preTriggerSamples, postTriggerSamples, self.timebase, None, 0, None, None)
         assert_pico_ok(status)
+
+        self.log('Измерение запущено, ожидаем срабатывания триггера...')
 
         # Check for data collection to finish using ps5000aIsReady
         ready = ctypes.c_int16(0)
@@ -232,20 +235,25 @@ class PicoScope5000A:
         # convert ADC counts data to mV
         adc2mVChAMax =  adc2mV(bufferAMax, self.chARange, self.maxADC)
 
-        time = np.linspace(0, (actual_samples - 1) * self.dt, actual_samples)
+        t = np.linspace(0, (actual_samples - 1) * self.dt, actual_samples)
 
         # plot data from channel A and B
-        plt.plot(time, adc2mVChAMax[:])
-        plt.xlabel('Time (ns)')
-        plt.ylabel('Voltage (mV)')
-        plt.show()
+        # plt.plot(t, adc2mVChAMax[:])
+        # plt.xlabel('Time (ns)')
+        # plt.ylabel('Voltage (mV)')
+        # plt.show()
 
         # Stop the scope
         # handle = chandle
         status = ps.ps5000aStop(self.chandle)
         assert_pico_ok(status)
 
+        return t, adc2mVChAMax[:]
 
+    def get_streaming_data(self, params):
+        t = np.linspace(0, 1, 1000)
+        data = np.sin(2*np.pi*5*t)
+        return t, data
 
 
     def close(self):

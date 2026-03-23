@@ -3952,19 +3952,6 @@ QPushButton:hover {
          </property>
         </item>
        </widget>
-       <widget class="QLabel" name="plot_pic">
-        <property name="geometry">
-         <rect>
-          <x>670</x>
-          <y>20</y>
-          <width>591</width>
-          <height>361</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
        <widget class="QPushButton" name="start_button">
         <property name="geometry">
          <rect>
@@ -4306,6 +4293,16 @@ QPushButton:hover {
         </property>
         <property name="text">
          <string>S</string>
+        </property>
+       </widget>
+       <widget class="QWidget" name="plot_container" native="true">
+        <property name="geometry">
+         <rect>
+          <x>650</x>
+          <y>20</y>
+          <width>651</width>
+          <height>381</height>
+         </rect>
         </property>
        </widget>
       </widget>
