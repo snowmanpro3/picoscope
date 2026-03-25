@@ -250,10 +250,93 @@ class PicoScope5000A:
 
         return t, adc2mVChAMax[:]
 
+    def _streaming_callback(self, handle, noOfSamples, startIndex,
+                        overflow, triggerAt, triggered, autoStop, param):
+
+        if noOfSamples == 0:
+            return
+
+        data = np.ctypeslib.as_array(self.bufferAMax)
+
+        new_data = data[startIndex:startIndex + noOfSamples]
+        new_data_mv = adc2mV(new_data, self.chARange, self.maxADC)
+
+        # время считаем локально (можно потом улучшить)
+        t = np.arange(len(new_data_mv)) * (self.sample_interval.value * 1e-6)
+
+        self._latest_chunk = (t, new_data_mv)
+
+
+    def start_streaming(self, params):
+        """
+        Запуск streaming режима (не трогает trigger/block)
+        """
+
+        self.sample_interval = ctypes.c_int32(params["sample_interval_us"])
+        self.sample_units = ps.PS5000A_TIME_UNITS["PS5000A_US"]
+
+        self.buffer_size = params.get("buffer_size", 50000)
+
+        self.bufferAMax = (ctypes.c_int16 * self.buffer_size)()
+
+        status = ps.ps5000aSetDataBuffers(
+            self.chandle,
+            self.channel,
+            ctypes.byref(self.bufferAMax),
+            None,
+            self.buffer_size,
+            0,
+            0
+        )
+        assert_pico_ok(status)
+
+        # callback
+        self._c_callback = ps.StreamingReadyType(self._streaming_callback)
+
+        status = ps.ps5000aRunStreaming(
+            self.chandle,
+            ctypes.byref(self.sample_interval),
+            self.sample_units,
+            0,
+            self.buffer_size,
+            False,  # autoStop OFF
+            1,
+            0,
+            self.buffer_size
+        )
+        assert_pico_ok(status)
+
+        self._streaming = True
+        self._latest_chunk = None
+
+        self.log("Streaming запущен")
+
+
     def get_streaming_data(self, params):
-        t = np.linspace(0, 1, 1000)
-        data = np.sin(2*np.pi*5*t)
-        return t, data
+        """
+        Получение данных в streaming режиме
+        """
+
+        if not getattr(self, "_streaming", False):
+            self.start_streaming(params)
+
+        ps.ps5000aGetStreamingLatestValues(
+            self.chandle,
+            self._c_callback,
+            None
+        )
+
+        return self._latest_chunk
+
+
+    def stop_streaming(self):
+        """
+        Остановка streaming режима
+        """
+        if getattr(self, "_streaming", False):
+            ps.ps5000aStop(self.chandle)
+            self._streaming = False
+            self.log("Streaming остановлен")
 
 
     def close(self):

@@ -44,9 +44,17 @@ class PicoWorker(QObject):
     def run_streaming(self):
         self.log.emit("Streaming режим")
 
+        self.pico.start_streaming(self.params)
+
         while self._running:
-            t, data = self.pico.get_streaming_data(self.params)
+            result = self.pico.get_streaming_data(self.params)
 
-            self.data_ready.emit((t, data))
+            if result is not None:
+                t, data = result
 
-            time.sleep(0.03)  # ~30 FPS
+                # ограничение для GUI (иначе он умрёт)
+                self.data_ready.emit((t[-2000:], data[-2000:]))
+
+            time.sleep(0.005)
+
+        self.pico.stop_streaming()
