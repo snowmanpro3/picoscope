@@ -259,7 +259,8 @@ class PicoScope5000A:
         data = np.ctypeslib.as_array(self.bufferAMax)
 
         new_data = data[startIndex:startIndex + noOfSamples]
-        new_data_mv = adc2mV(new_data, self.chARange, self.maxADC)
+        # new_data_mv = adc2mV(new_data, self.chARange, self.maxADC)
+        new_data_mv = new_data.astype(float)
 
         # время считаем локально (можно потом улучшить)
         t = np.arange(len(new_data_mv)) * (self.sample_interval.value * 1e-6)

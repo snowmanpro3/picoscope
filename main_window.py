@@ -50,8 +50,8 @@ class Picoscope_thermocouple_GUI(QMainWindow):
             'trigger_choice': 'DISABLED', #!!! мб удалить
             'mode': 'streaming', # streaming или trigger
             'dt_limit': '0.0005',
-            'sample_interval_us': 100,   # 10 кГц
-            'buffer_size': 50000
+            'sample_interval_us': 100,   #???? 10 кГц
+            'buffer_size': 50000 #?????
         }
 
         self._setup_logger(self.gui.Console) # Настройка консоли для вывода принтов
